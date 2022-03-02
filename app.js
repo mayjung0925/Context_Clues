@@ -30,32 +30,22 @@ var weaponsArr = [
 
 
 
-for (var i = 0; i < h3Arr.length; i++) {
+for (var i = 0 ; i < h3Arr.length; i++) {
     var newH3 = h3Arr[i];
     newH3.setAttribute('id', i)
-    newH3.textContent = 'Accusation ' + (i + 1);
-
-    var indexOfFriends = i % 5;
-    var friend = friendsArr[indexOfFriends];
-
-    var indexOfWeapons = i % 20;
-    var weapon =  weaponsArr[indexOfWeapons]; 
-
-    var indexOfLocations = i % 10
-    var newLocation =locationsArr[indexOfLocations];
-   
-
+    newH3.textContent = 'Accusation ' + (i+1);
 
     var currentH3 = document.getElementById(i);
 
-    currentH3.addEventListener('click', alertFriend(friend , weapon ,  newLocation ))
+    currentH3.addEventListener('click', alertFriend(i))
 
 }
 
-function alertFriend( friend, weapon, newLocation ) {
+function alertFriend(i) {
     return function () {
         this.style.color = 'skyblue'
-        alert(' I accuse ' + friend + ' , with the '+ weapon + ' in the '  + newLocation )
+        alert(`Accusation ${i+1} :  I accuse ${friendsArr[i%5]}, with the ${weaponsArr[i%20]} in the ${locationsArr[i%10]} `)
+       
     };
     
 }
